@@ -2,9 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz/Quiz/authen.dart';
-import '../provider/theme_provider.dart'; // ✅ เพิ่มการจัดการธีม
-import '../provider/theme.dart'; // ✅ ใช้ธีม Light/Dark
-import 'login.dart'; // ✅ เริ่มต้นที่หน้า Login
+import '../provider/theme_provider.dart';
+import '../provider/theme.dart';
 import '../Quiz/register.dart';
 import '../Quiz/forgot.dart';
 import '../Quiz/home.dart';
