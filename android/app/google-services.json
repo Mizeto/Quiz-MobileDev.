@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "633514658727",
+    "project_id": "nattawut-supapat",
+    "storage_bucket": "nattawut-supapat.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633514658727:android:facb37d7bd075d73fe0482",
+        "android_client_info": {
+          "package_name": "com.example.quiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxw55i6g7lNRtn4kedBBr1JIe_u6M7m0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
