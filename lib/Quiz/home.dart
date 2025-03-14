@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'add.dart';
@@ -18,7 +17,7 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme; // ✅ รองรับ Dark Mode
+    final theme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +34,6 @@ class _Home_ScreenState extends State<Home_Screen> {
           ),
         ),
         actions: [
-          // ✅ **กดไอคอนแล้วไปที่หน้า Profile**
           IconButton(
             icon: Icon(Icons.account_circle, size: 28),
             onPressed: () {
@@ -47,8 +45,6 @@ class _Home_ScreenState extends State<Home_Screen> {
           ),
         ],
       ),
-
-      // ✅ **Floating Action Button สำหรับเพิ่ม Diary**
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -60,8 +56,6 @@ class _Home_ScreenState extends State<Home_Screen> {
         backgroundColor: Colors.amber,
         child: Icon(Icons.add, color: Colors.white),
       ),
-
-      // ✅ **แสดงรายการ Diary**
       body: StreamBuilder(
         stream: diaryCollection.snapshots(),
         builder: (context, snapshot) {
@@ -78,7 +72,6 @@ class _Home_ScreenState extends State<Home_Screen> {
               var diary = diaries[index];
 
               return Slidable(
-                // ✅ **ปัดซ้ายเพื่อแชร์**
                 startActionPane: ActionPane(
                   motion: StretchMotion(),
                   children: [
@@ -94,11 +87,9 @@ class _Home_ScreenState extends State<Home_Screen> {
                   ],
                 ),
 
-                // ✅ **ปัดขวาเพื่อแก้ไข/ลบ**
                 endActionPane: ActionPane(
                   motion: DrawerMotion(),
                   children: [
-                    // 🖊 **ปุ่ม Edit**
                     SlidableAction(
                       onPressed: (context) {
                         Navigator.push(
@@ -114,7 +105,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                       label: 'Edit',
                     ),
 
-                    // ❌ **ปุ่ม Delete**
                     SlidableAction(
                       onPressed: (context) {
                         diaryCollection.doc(diary.id).delete();
@@ -137,7 +127,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // 🔹 **ชื่อหัวข้อของไดอารี่**
                         Text(
                           diary['title'],
                           style: TextStyle(
@@ -146,9 +135,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                             color: theme.primary,
                           ),
                         ),
-                        SizedBox(height: 5),
 
-                        // 🔹 **เนื้อหาของไดอารี่**
+                        SizedBox(height: 5),
                         Text(
                           diary['description'],
                           style: TextStyle(
@@ -158,8 +146,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                         ),
 
                         SizedBox(height: 10),
-
-                        // 🔹 **แสดงอารมณ์**
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

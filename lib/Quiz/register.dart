@@ -49,7 +49,7 @@ class _Register_ScreenState extends State<Register_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme; // ✅ รองรับ Dark Mode
+    final theme = Theme.of(context).colorScheme;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -64,22 +64,21 @@ class _Register_ScreenState extends State<Register_Screen> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  foreground: Paint()
-                    ..shader = LinearGradient(
-                      colors: [Colors.blue, Colors.purple],
-                    ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+                  foreground:
+                      Paint()
+                        ..shader = LinearGradient(
+                          colors: [Colors.blue, Colors.purple],
+                        ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
                 ),
               ),
-              SizedBox(height: 20),
 
-              // ✅ Email Field
+              SizedBox(height: 20),
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(labelText: "Email"),
               ),
-              SizedBox(height: 20),
 
-              // ✅ Password Field
+              SizedBox(height: 20),
               TextField(
                 controller: passwordController,
                 obscureText: _obscurePassword,
@@ -100,9 +99,8 @@ class _Register_ScreenState extends State<Register_Screen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
 
-              // ✅ Confirm Password Field
+              SizedBox(height: 20),
               TextField(
                 controller: confirmPasswordController,
                 obscureText: _obscureConfirmPassword,
@@ -123,9 +121,8 @@ class _Register_ScreenState extends State<Register_Screen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
 
-              // ✅ Register Button
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: signUserUp,
                 style: ElevatedButton.styleFrom(
@@ -135,24 +132,24 @@ class _Register_ScreenState extends State<Register_Screen> {
                 ),
                 child: Text("Register"),
               ),
-              SizedBox(height: 20),
 
-              // ✅ Divider: "Or continue with"
+              SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
-                      child: Divider(color: theme.onSurface, thickness: 1)),
+                    child: Divider(color: theme.onSurface, thickness: 1),
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text("Or continue with"),
                   ),
                   Expanded(
-                      child: Divider(color: theme.onSurface, thickness: 1)),
+                    child: Divider(color: theme.onSurface, thickness: 1),
+                  ),
                 ],
               ),
-              SizedBox(height: 20),
 
-              // ✅ Social Media Login
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -172,9 +169,8 @@ class _Register_ScreenState extends State<Register_Screen> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
 
-              // ✅ Already have an account? Login
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

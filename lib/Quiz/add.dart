@@ -9,14 +9,15 @@ class Add_Form extends StatefulWidget {
 class _Add_FormState extends State<Add_Form> {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
-  String selectedMood = "😊 Happy"; // ✅ ค่าอารมณ์เริ่มต้น
+  String selectedMood = "😊 Happy";
 
-  CollectionReference diaryCollection =
-      FirebaseFirestore.instance.collection('Diary');
+  CollectionReference diaryCollection = FirebaseFirestore.instance.collection(
+    'Diary',
+  );
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme; // ✅ รองรับ Dark Mode
+    final theme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -25,10 +26,11 @@ class _Add_FormState extends State<Add_Form> {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            foreground: Paint()
-              ..shader = LinearGradient(
-                colors: [Colors.blue, Colors.purple],
-              ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+            foreground:
+                Paint()
+                  ..shader = LinearGradient(
+                    colors: [Colors.blue, Colors.purple],
+                  ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
           ),
         ),
       ),
@@ -38,7 +40,6 @@ class _Add_FormState extends State<Add_Form> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ✅ **Title Input**
               Text(
                 "Title",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -50,9 +51,8 @@ class _Add_FormState extends State<Add_Form> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20),
 
-              // ✅ **Description Input**
+              SizedBox(height: 20),
               Text(
                 "Description",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -65,47 +65,41 @@ class _Add_FormState extends State<Add_Form> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20),
 
-              // ✅ **Mood Selection**
+              SizedBox(height: 20),
               Text(
                 "Mood",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               DropdownButtonFormField<String>(
                 value: selectedMood,
-                items: [
-                  "😊 Happy",
-                  "😢 Sad",
-                  "😡 Angry",
-                  "😴 Sleepy",
-                  "🤔 Thoughtful",
-                  "😍 In Love",
-                ].map((mood) {
-                  return DropdownMenuItem(
-                    value: mood,
-                    child: Text(mood),
-                  );
-                }).toList(),
+                items:
+                    [
+                      "😊 Happy",
+                      "😢 Sad",
+                      "😡 Angry",
+                      "😴 Sleepy",
+                      "🤔 Thoughtful",
+                      "😍 In Love",
+                    ].map((mood) {
+                      return DropdownMenuItem(value: mood, child: Text(mood));
+                    }).toList(),
                 onChanged: (value) {
                   setState(() {
                     selectedMood = value!;
                   });
                 },
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                ),
+                decoration: InputDecoration(border: OutlineInputBorder()),
               ),
-              SizedBox(height: 30),
 
-              // ✅ **Save Diary Button**
+              SizedBox(height: 30),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
                     diaryCollection.add({
                       'title': titleController.text,
                       'description': descriptionController.text,
-                      'mood': selectedMood, // ✅ บันทึกค่าอารมณ์ลง Firestore
+                      'mood': selectedMood,
                     });
                     Navigator.pop(context);
                   },

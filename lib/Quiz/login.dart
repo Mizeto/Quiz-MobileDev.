@@ -1,9 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import '../Quiz/forgot.dart';
-import '../Quiz/register.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
-import '../Quiz/home.dart';
 
 class Login_Screen extends StatefulWidget {
   const Login_Screen({super.key});
@@ -45,7 +42,7 @@ class _Login_ScreenState extends State<Login_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme; // ✅ รองรับ Dark Mode
+    final theme = Theme.of(context).colorScheme;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -60,22 +57,21 @@ class _Login_ScreenState extends State<Login_Screen> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  foreground: Paint()
-                    ..shader = LinearGradient(
-                      colors: [Colors.blue, Colors.purple],
-                    ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+                  foreground:
+                      Paint()
+                        ..shader = LinearGradient(
+                          colors: [Colors.blue, Colors.purple],
+                        ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
                 ),
               ),
-              SizedBox(height: 20),
 
-              // ✅ Email Field
+              SizedBox(height: 20),
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(labelText: "Email"),
               ),
-              SizedBox(height: 20),
 
-              // ✅ Password Field
+              SizedBox(height: 20),
               TextField(
                 controller: passwordController,
                 obscureText: _obscurePassword,
@@ -96,9 +92,8 @@ class _Login_ScreenState extends State<Login_Screen> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
 
-              // ✅ Forgot Password
+              SizedBox(height: 15),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
@@ -109,7 +104,6 @@ class _Login_ScreenState extends State<Login_Screen> {
                 ),
               ),
 
-              // ✅ Remember Me
               Row(
                 children: [
                   Checkbox(
@@ -125,8 +119,6 @@ class _Login_ScreenState extends State<Login_Screen> {
               ),
 
               SizedBox(height: 10),
-
-              // ✅ Login Button
               ElevatedButton(
                 onPressed: signUserIn,
                 style: ElevatedButton.styleFrom(
@@ -136,24 +128,24 @@ class _Login_ScreenState extends State<Login_Screen> {
                 ),
                 child: Text("Login"),
               ),
-              SizedBox(height: 20),
 
-              // ✅ Divider: "Or continue with"
+              SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
-                      child: Divider(color: theme.onSurface, thickness: 1)),
+                    child: Divider(color: theme.onSurface, thickness: 1),
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text("Or continue with"),
                   ),
                   Expanded(
-                      child: Divider(color: theme.onSurface, thickness: 1)),
+                    child: Divider(color: theme.onSurface, thickness: 1),
+                  ),
                 ],
               ),
-              SizedBox(height: 20),
 
-              // ✅ Social Media Login
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -173,9 +165,8 @@ class _Login_ScreenState extends State<Login_Screen> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
 
-              // ✅ Register Now
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

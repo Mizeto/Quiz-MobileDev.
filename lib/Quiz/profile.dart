@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'login.dart'; // ✅ นำเข้า Login_Screen
+import 'login.dart';
 
 class Profile_Screen extends StatelessWidget {
   final User? user = FirebaseAuth.instance.currentUser;
@@ -15,7 +15,7 @@ class Profile_Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme; // ✅ รองรับ Dark Mode
+    final theme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -36,30 +36,26 @@ class Profile_Screen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // ✅ **Avatar ของผู้ใช้**
             CircleAvatar(
               radius: 50,
               backgroundImage: NetworkImage(
                 user?.photoURL ?? 'https://example.com/default_avatar.png',
               ),
             ),
-            SizedBox(height: 10),
 
-            // ✅ **แสดงชื่อผู้ใช้**
+            SizedBox(height: 10),
             Text(
               user?.displayName ?? "No Name",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 5),
 
-            // ✅ **แสดงอีเมล**
+            SizedBox(height: 5),
             Text(
               user?.email ?? "No Email",
               style: TextStyle(fontSize: 16, color: theme.onSurface),
             ),
-            SizedBox(height: 20),
 
-            // ✅ **ปุ่ม Logout**
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => signOutUser(context),
               style: ElevatedButton.styleFrom(

@@ -19,16 +19,15 @@ class _Forgot_ScreenState extends State<Forgot_Screen> {
         SnackBar(content: Text("Password reset link sent to your email.")),
       );
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error: ${e.toString()}")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error: ${e.toString()}")));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme; // ✅ รองรับ Dark Mode
-
+    final theme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -36,10 +35,11 @@ class _Forgot_ScreenState extends State<Forgot_Screen> {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            foreground: Paint()
-              ..shader = LinearGradient(
-                colors: [Colors.blue, Colors.purple],
-              ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+            foreground:
+                Paint()
+                  ..shader = LinearGradient(
+                    colors: [Colors.blue, Colors.purple],
+                  ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
           ),
         ),
       ),
@@ -49,14 +49,12 @@ class _Forgot_ScreenState extends State<Forgot_Screen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ✅ **คำอธิบายการรีเซ็ตรหัสผ่าน**
               Text(
                 "Enter your email and we will send you a password reset link.",
                 style: TextStyle(fontSize: 16, color: theme.onSurface),
               ),
-              SizedBox(height: 20),
 
-              // ✅ **Email Input**
+              SizedBox(height: 20),
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -65,9 +63,8 @@ class _Forgot_ScreenState extends State<Forgot_Screen> {
                   prefixIcon: Icon(Icons.email),
                 ),
               ),
-              SizedBox(height: 30),
 
-              // ✅ **Reset Password Button**
+              SizedBox(height: 30),
               Center(
                 child: ElevatedButton(
                   onPressed: resetPassword,
@@ -81,23 +78,22 @@ class _Forgot_ScreenState extends State<Forgot_Screen> {
               ),
 
               SizedBox(height: 20),
-
-              // ✅ **Divider และปุ่มกลับไปหน้า Login**
               Row(
                 children: [
                   Expanded(
-                      child: Divider(color: theme.onSurface, thickness: 1)),
+                    child: Divider(color: theme.onSurface, thickness: 1),
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text("Back to login"),
                   ),
                   Expanded(
-                      child: Divider(color: theme.onSurface, thickness: 1)),
+                    child: Divider(color: theme.onSurface, thickness: 1),
+                  ),
                 ],
               ),
-              SizedBox(height: 20),
 
-              // ✅ **Back to Login Button**
+              SizedBox(height: 20),
               Center(
                 child: TextButton(
                   onPressed: () {
